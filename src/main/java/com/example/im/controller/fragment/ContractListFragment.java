@@ -33,10 +33,6 @@ import com.hyphenate.easeui.widget.EaseSearchTextView;
 import com.hyphenate.easeui.widget.EaseTitleBar;
 import com.hyphenate.exceptions.HyphenateException;
 
-/**
- * @Author cyh
- * @Date 2021/6/1 19:21
- */
 //联系人列表页面
 public class ContractListFragment extends EaseContactListFragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
     private EaseSearchTextView tvSearch;

@@ -57,13 +57,13 @@ public class RegisterActivity_User extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    try {
-                        EMClient.getInstance().changeAppkey("1167240702169552#demo");
-                    } catch (HyphenateException e) {
-                        throw new RuntimeException(e);
-                    }
+//                    try {
+//                        EMClient.getInstance().changeAppkey("1167240702169552#demo");
+//                    } catch (HyphenateException e) {
+//                        throw new RuntimeException(e);
+//                    }
                     //去环信服务器注册账号
-                    EMClient.getInstance().createAccount(registName,registPwd);
+                    EMClient.getInstance().createAccount(registName+"User",registPwd);
 
                     //更新页面显示
                     runOnUiThread(new Runnable() {

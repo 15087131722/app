@@ -59,14 +59,14 @@ public class Activity_login_to_user extends AppCompatActivity {
             @Override
             public void run() {
 
-                try {
-                    EMClient.getInstance().changeAppkey("1167240702169552#demo");
-                } catch (HyphenateException e) {
-                    throw new RuntimeException(e);
-                }
+//                try {
+//                    EMClient.getInstance().changeAppkey("1167240702169552#demo");
+//                } catch (HyphenateException e) {
+//                    throw new RuntimeException(e);
+//                }
 
                 //去环信服务器登录
-                EMClient.getInstance().login(loginName, loginPwd, new EMCallBack() {
+                EMClient.getInstance().login(loginName+"User", loginPwd, new EMCallBack() {
                     //登录成功后的处理
                     @Override
                     public void onSuccess() {

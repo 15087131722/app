@@ -72,7 +72,7 @@ public class AddContactActivity extends Activity {
             @Override
             public void run() {
                 //去服务器判断当前查找的用户是否存在
-                userInfo = new UserInfo(name);
+                userInfo = new UserInfo(name+"User");
 
                 //更新UI显示
                 runOnUiThread(new Runnable() {
@@ -83,6 +83,17 @@ public class AddContactActivity extends Activity {
                     }
                 });
 
+                //去服务器判断当前查找的用户是否存在
+                userInfo = new UserInfo(name+"HR");
+
+                //更新UI显示
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        rl_add.setVisibility(View.VISIBLE);
+                        tv_add_name.setText(userInfo.getName());
+                    }
+                });
             }
         });
     }
