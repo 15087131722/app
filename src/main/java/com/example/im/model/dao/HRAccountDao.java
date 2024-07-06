@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.im.model.bean.HRInfo;
-import com.example.im.model.bean.UserInfo;
 import com.example.im.model.db.HRAccountDB;
 
 public class HRAccountDao {
@@ -17,18 +16,18 @@ public class HRAccountDao {
     }
 
     //添加用户到数据库
-    public void addAccount(UserInfo user){
+    public void addAccount(HRInfo user){
         //获取数据库对象
         SQLiteDatabase db = mHelper.getReadableDatabase();
 
         //执行添加操作
         ContentValues values = new ContentValues();
-        values.put(UserAccountTable.COL_HXID,user.getHxid());
-        values.put(UserAccountTable.COL_NAME,user.getName());
-        values.put(UserAccountTable.COL_NICK,user.getNick());
-        values.put(UserAccountTable.COL_PHOTO,user.getPhoto());
+        values.put(HRAccountTable.COL_HXID,user.getHxid());
+        values.put(HRAccountTable.COL_NAME,user.getName());
+        values.put(HRAccountTable.COL_NICK,user.getNick());
+        values.put(HRAccountTable.COL_PHOTO,user.getPhoto());
 
-        db.replace(UserAccountTable.TAB_NAME,null,values);
+        db.replace(HRAccountTable.TAB_NAME,null,values);
 
     }
     //根据环信id获取所有用户信息
@@ -37,7 +36,7 @@ public class HRAccountDao {
         SQLiteDatabase db = mHelper.getReadableDatabase();
 
         //执行查询语句
-        String sql="select * from " + UserAccountTable.TAB_NAME + " where "+UserAccountTable.COL_HXID +"=?";
+        String sql="select * from " + HRAccountTable.TAB_NAME + " where "+HRAccountTable.COL_HXID +"=?";
         Cursor cursor = db.rawQuery(sql, new String[]{hxId});
 
         HRInfo HRInfo = null;
@@ -45,10 +44,10 @@ public class HRAccountDao {
             HRInfo = new HRInfo();
 
             //封装对象
-            HRInfo.setHxid(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_HXID)));
-            HRInfo.setName(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_NAME)));
-            HRInfo.setNick(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_NICK)));
-            HRInfo.setPhoto(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_PHOTO)));
+            HRInfo.setHxid(cursor.getString(cursor.getColumnIndex(HRAccountTable.COL_HXID)));
+            HRInfo.setName(cursor.getString(cursor.getColumnIndex(HRAccountTable.COL_NAME)));
+            HRInfo.setNick(cursor.getString(cursor.getColumnIndex(HRAccountTable.COL_NICK)));
+            HRInfo.setPhoto(cursor.getString(cursor.getColumnIndex(HRAccountTable.COL_PHOTO)));
         }
         //关闭资源
         cursor.close();
