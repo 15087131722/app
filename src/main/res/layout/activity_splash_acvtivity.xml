@@ -15,7 +15,7 @@
         andriod:layout_height="wrap_content"
         andriod:layout_gravity="bottom|center"
         andriod:layout_marginBottom="100dp"
-        andriod:text="即时通讯"
+        andriod:text="校园直聘"
         andriod:textColor="@color/white"
         andriod:letterSpacing="0.4"
         andriod:textSize="20sp" />

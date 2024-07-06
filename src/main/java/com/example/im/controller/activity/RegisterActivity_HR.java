@@ -70,6 +70,10 @@ public class RegisterActivity_HR extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(RegisterActivity_HR.this,"注册成功",Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(RegisterActivity_HR.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     });
 

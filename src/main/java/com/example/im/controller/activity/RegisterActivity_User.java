@@ -2,6 +2,7 @@ package com.example.im.controller.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -69,6 +70,10 @@ public class RegisterActivity_User extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(RegisterActivity_User.this,"注册成功",Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(RegisterActivity_User.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     });
 
