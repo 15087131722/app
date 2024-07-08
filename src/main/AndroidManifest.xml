@@ -48,7 +48,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.IM"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".im.controller.activity.RegisterActivity_User"
@@ -58,6 +58,9 @@
             android:exported="false" />
         <activity
             android:name=".im.controller.activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".im.controller.activity.JobDetailActivity"
             android:exported="false" />
         <activity
             android:name=".im.controller.activity.Login_User_or_HR_Activity" />

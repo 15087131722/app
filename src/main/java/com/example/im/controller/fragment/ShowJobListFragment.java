@@ -1,8 +1,10 @@
 package com.example.im.controller.fragment;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.R;
+import com.example.im.controller.activity.JobDetailActivity;
+import com.example.im.controller.activity.MainActivity;
 import com.example.im.controller.activity.RegisterActivity_User;
 import com.example.im.controller.adapter.JobListAdapter;
 import com.example.im.model.bean.JobInfo;
@@ -48,14 +52,14 @@ public class ShowJobListFragment extends Fragment {
             TextView tv_salary = view.findViewById(R.id.job_salary);
             Button jobbutton = view.findViewById(R.id.job_bt);
 
-
 //        // 给商品行添加点击事件。点击商品行跳到商品的详情页
         jobbutton.setOnClickListener(v -> {
             //跳转到user注册界面，成功
             /**
              * TODO 跳转页面
              */
-            Intent intent = new Intent(getActivity(), RegisterActivity_User.class);
+            Intent intent = new Intent(getActivity(), JobDetailActivity.class);
+            intent.putExtra("jobinfo", jobInfo);
 
             startActivity(intent);
         });
