@@ -12,13 +12,13 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.R;
-import com.example.im.controller.fragment.ChatFragment;
+import com.example.im.controller.fragment.ShowJobListFragment;
 import com.example.im.controller.fragment.ContractListFragment;
 import com.example.im.controller.fragment.SettingFragment;
 
 public class MainActivity extends FragmentActivity {
     private RadioGroup rg_main;
-    private ChatFragment chatFragment;
+    private ShowJobListFragment chatFragment;
     private ContractListFragment contractListFragment;
     private SettingFragment settingFragment;
     private RadioButton rb_main_chat;
@@ -72,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 
     private void initData() {
         //创建三个fragment对象
-        chatFragment = new ChatFragment();
+        chatFragment = new ShowJobListFragment();
         contractListFragment = new ContractListFragment();
         settingFragment = new SettingFragment();
     }

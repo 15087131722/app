@@ -19,10 +19,6 @@ import com.example.im.model.Model;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 
-/**
- * @Author cyh
- * @Date 2021/6/1 19:22
- */
 public class SettingFragment extends Fragment {
     private Button bt_setting_logout;
     private TextView userId_view;
