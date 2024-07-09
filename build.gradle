@@ -50,12 +50,19 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+    implementation ('com.qiniu:qiniu-android-sdk:8.7.+'){
+        exclude (group: 'com.squareup.okhttp3', module: 'okhttp')
+    }
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
+    implementation 'com.qiniu:qiniu-java-sdk:7.13.+'
+
     implementation 'io.hyphenate:hyphenate-chat:3.8.1'
-    implementation 'com.android.support:support-v4:30.4.1'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.android.support:support-v4:34.4.1'
     implementation project(path: ':ease')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

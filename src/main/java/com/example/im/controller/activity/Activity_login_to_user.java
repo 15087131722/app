@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.R;
+import com.example.im.MyApplication;
 import com.example.im.model.Model;
 import com.example.im.model.bean.UserInfo;
 import com.hyphenate.EMCallBack;
@@ -39,11 +40,13 @@ public class Activity_login_to_user extends AppCompatActivity {
         bt_login_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                regist();
+                ((MyApplication)getApplication()).setUserOrHR("USER");
+                login();
+
             }
         });
     }
-    private void regist() {
+    private void login() {
         //1 获取输入的用户名和密码
         String loginName= et_login_name.getText().toString();
         String loginPwd = et_login_pwd.getText().toString();

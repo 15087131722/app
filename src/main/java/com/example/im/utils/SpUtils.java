@@ -3,7 +3,7 @@ package com.example.im.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.im.IMApplication;
+import com.example.im.MyApplication;
 
 /**
  * @Author cyh
@@ -24,7 +24,7 @@ public class SpUtils {
     public static SpUtils getInstance() {
 
         if (mSp == null) {
-            mSp = IMApplication.getGlobalApplication().getSharedPreferences("im", Context.MODE_PRIVATE);
+            mSp = MyApplication.getGlobalApplication().getSharedPreferences("im", Context.MODE_PRIVATE);
         }
 
         return instance;

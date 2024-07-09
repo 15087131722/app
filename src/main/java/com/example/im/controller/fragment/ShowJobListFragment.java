@@ -1,7 +1,6 @@
 package com.example.im.controller.fragment;
 
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +14,12 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.R;
+import com.example.im.MyApplication;
 import com.example.im.controller.activity.JobDetailActivity;
-import com.example.im.controller.activity.MainActivity;
-import com.example.im.controller.activity.RegisterActivity_User;
 import com.example.im.controller.adapter.JobListAdapter;
 import com.example.im.model.bean.JobInfo;
 
+import java.io.IOException;
 import java.util.List;
 
 //会话列表页面
@@ -29,46 +28,74 @@ public class ShowJobListFragment extends Fragment {
    // View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_list, null);
     private LinearLayout ll_jobList;
     private LinearLayout ll_job_news;
-    private List<JobInfo> mJobList ;
+    private List<JobInfo> mJobList;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        //View view = View.inflate(getActivity(), R.layout.fragment_about_me, null);
 //        //show(view);
 
         View view = View.inflate(getActivity(), R.layout.job_list, null);
-        mJobList = new JobListAdapter().getTestJobList();
+        try {
+            mJobList = new JobListAdapter().getTestJobList();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         ll_jobList = view.findViewById(R.id.ll_job_list);
-        ll_job_news = View.inflate(getActivity(),R.layout.job_item,null).findViewById(R.id.ll_job_news);
+        ll_job_news = View.inflate(getActivity(),R.layout.user_job_item,null).findViewById(R.id.ll_job_news);
+
         showJobList();
         return view;
     }
     private void showJobList(){
-        //ll_jobList.removeAllViews();
+        String account = ((MyApplication)getActivity().getApplication()).getUserOrHR();
+        Log.i("222", "showJobList: "+account);
+        if(account.equals("HR")){
+            ll_jobList.removeAllViews();
+            for (int i = 0; i < mJobList.size(); i++) {
+                JobInfo jobInfo = mJobList.get(i);
+                View view = LayoutInflater.from(this.getContext()).inflate(R.layout.user_job_item, null);
+                TextView hr_name = view.findViewById(R.id.hr_name);
+                TextView tv_name = view.findViewById(R.id.job_name);
+                TextView tv_salary = view.findViewById(R.id.job_salary);
+                Button jobbutton = view.findViewById(R.id.job_bt);
+                // 给商品行添加点击事件。点击商品行跳到商品的详情页
+                jobbutton.setOnClickListener(v -> {
 
-        ll_jobList.removeAllViews();
-        for (int i = 0; i < mJobList.size(); i++) {
-            JobInfo jobInfo = mJobList.get(i);
-            View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_item, null);
-            TextView tv_name = view.findViewById(R.id.job_name);
-            TextView tv_salary = view.findViewById(R.id.job_salary);
-            Button jobbutton = view.findViewById(R.id.job_bt);
+                    Intent intent = new Intent(getActivity(), JobDetailActivity.class);
+                    intent.putExtra("jobinfo", jobInfo);
 
-//        // 给商品行添加点击事件。点击商品行跳到商品的详情页
-        jobbutton.setOnClickListener(v -> {
-            //跳转到user注册界面，成功
-            /**
-             * TODO 跳转页面
-             */
-            Intent intent = new Intent(getActivity(), JobDetailActivity.class);
-            intent.putExtra("jobinfo", jobInfo);
+                    startActivity(intent);
+                });
+                hr_name.setText(jobInfo.getName_HR());
+                tv_name.setText(jobInfo.getJobName());
+                tv_salary.setText(jobInfo.getSalary());
+                ll_jobList.addView(view);
+            }
 
-            startActivity(intent);
-        });
-            tv_name.setText(jobInfo.getJobName());
-            tv_salary.setText(jobInfo.getSalary());
-            ll_jobList.addView(view);
+        }else if(account.equals("USER")){
+            ll_jobList.removeAllViews();
+            for (int i = 0; i < mJobList.size(); i++) {
+                JobInfo jobInfo = mJobList.get(i);
+                View view = LayoutInflater.from(this.getContext()).inflate(R.layout.user_job_item, null);
+                TextView hr_name = view.findViewById(R.id.hr_name);
+                TextView tv_name = view.findViewById(R.id.job_name);
+                TextView tv_salary = view.findViewById(R.id.job_salary);
+                Button jobbutton = view.findViewById(R.id.job_bt);
+                // 给商品行添加点击事件。点击商品行跳到商品的详情页
+                jobbutton.setOnClickListener(v -> {
+
+                    Intent intent = new Intent(getActivity(), JobDetailActivity.class);
+                    intent.putExtra("jobinfo", jobInfo);
+
+                    startActivity(intent);
+                });
+                hr_name.setText(jobInfo.getName_HR());
+                tv_name.setText(jobInfo.getJobName());
+                tv_salary.setText(jobInfo.getSalary());
+                ll_jobList.addView(view);
+            }
         }
-    }
 
+    }
 
     // @Override
 //    public void initView(Bundle savedInstanceState) {

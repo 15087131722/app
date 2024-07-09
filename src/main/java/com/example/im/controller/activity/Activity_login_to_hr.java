@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.R;
+import com.example.im.MyApplication;
 import com.example.im.model.Model;
 import com.example.im.model.bean.HRInfo;
 import com.example.im.model.bean.HRInfo;
@@ -40,7 +41,9 @@ public class Activity_login_to_hr extends AppCompatActivity {
         bt_login_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MyApplication)getApplication()).setUserOrHR("HR");
                 login();
+
             }
         });
     }
