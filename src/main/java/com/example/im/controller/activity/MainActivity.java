@@ -22,9 +22,6 @@ public class MainActivity extends FragmentActivity {
     private ShowJobListFragment chatFragment;
     private ContractListFragment contractListFragment;
     private SettingFragment settingFragment;
-    private RadioButton rb_main_chat;
-    private RadioButton rb_main_contact;
-    private RadioButton rb_main_setting;
 
 
     @Override
@@ -85,26 +82,26 @@ public class MainActivity extends FragmentActivity {
 
     private void initView() {
         rg_main=(RadioGroup)findViewById(R.id.rg_main);
-        rb_main_chat=findViewById(R.id.rb_main_chat);
-        rb_main_contact=findViewById(R.id.rb_main_contact);
-        rb_main_setting=findViewById(R.id.rb_main_setting);
+        RadioButton rb_main_chat = findViewById(R.id.rb_main_chat);
+        RadioButton rb_main_contact = findViewById(R.id.rb_main_contact);
+        RadioButton rb_main_setting = findViewById(R.id.rb_main_setting);
 
         //定义底部标签图片大小和位置
-        Drawable drawable_news = getResources().getDrawable(R.drawable.em_main_tab_conversation);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable_news = getResources().getDrawable(R.drawable.em_main_tab_conversation);
         //当这个图片被绘制时，给他绑定一个矩形 ltrb规定这个矩形,以左上角为原点
         drawable_news.setBounds(5, 13, 70, 80);
         //设置图片在文字的哪个方向
         rb_main_chat.setCompoundDrawables(null, drawable_news, null, null);
 
         //定义底部标签图片大小和位置
-        Drawable drawable_live = getResources().getDrawable(R.drawable.em_main_tab_friends);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable_live = getResources().getDrawable(R.drawable.em_main_tab_friends);
         //当这个图片被绘制时，给他绑定一个矩形 ltrb规定这个矩形
         drawable_live.setBounds(5, 13, 70, 80);
         //设置图片在文字的哪个方向
         rb_main_contact.setCompoundDrawables(null, drawable_live, null, null);
 
         //定义底部标签图片大小和位置
-        Drawable drawable_tuijian = getResources().getDrawable(R.drawable.em_main_tab_me);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable_tuijian = getResources().getDrawable(R.drawable.em_main_tab_me);
         //当这个图片被绘制时，给他绑定一个矩形 ltrb规定这个矩形
         drawable_tuijian.setBounds(5, 13, 70, 80);
         //设置图片在文字的哪个方向
