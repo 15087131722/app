@@ -1,7 +1,9 @@
 package com.example.im.controller.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
@@ -9,10 +11,17 @@ import android.os.Message;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.R;
 import com.example.im.model.Model;
 import com.example.im.model.bean.UserInfo;
 import com.hyphenate.chat.EMClient;
+
+import java.io.File;
+import java.io.IOException;
 
 //欢迎页面
 public class SplashActivity extends Activity {
@@ -90,4 +99,5 @@ public class SplashActivity extends Activity {
         //销毁消息
         handler.removeCallbacksAndMessages(null);
     }
+
 }

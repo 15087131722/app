@@ -1,12 +1,21 @@
 package com.example.im.controller.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.R;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Login_User_or_HR_Activity extends Activity {
 
@@ -55,5 +64,4 @@ public class Login_User_or_HR_Activity extends Activity {
             }
         });
     }
-
 }

@@ -1,6 +1,8 @@
 package com.example.im.model.bean;
 
-public class JobInfo {
+import java.io.Serializable;
+
+public class JobInfo implements Serializable{
     String name_HR;
     String JobName;
     String detail;
