@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 应用名称和图标 -->
+
+    <!-- 版本信息 -->
+
+    <TextView
+        android:id="@+id/text_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:drawablePadding="8dp"
+        android:paddingBottom="16dp"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/app_logo1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 开发者信息 -->
+
+    <!-- 联系方式 -->
+
+    <!-- 使用许可协议 -->
+
+    <TextView
+        android:id="@+id/text_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:text="@string/Version"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_app_name" />
+
+    <TextView
+        android:id="@+id/text_developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:paddingBottom="15dp"
+        android:text="@string/team_name"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_version" />
+
+    <TextView
+        android:id="@+id/text_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingBottom="30dp"
+        android:text="@string/contact_address"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_developer" />
+
+    <TextView
+        android:id="@+id/text_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/license_apache_license_2_0"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_contact" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

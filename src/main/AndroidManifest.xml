@@ -73,7 +73,9 @@
         <activity android:name=".im.controller.activity.AddContactActivity" />
         <activity android:name=".im.controller.activity.MainActivity" />
         <activity android:name=".im.controller.activity.LoginActivity" />
+        <activity android:name=".im.controller.activity.AboutActivity" />
         <activity android:name=".im.controller.activity.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
