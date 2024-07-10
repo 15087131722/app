@@ -2,10 +2,16 @@ package com.example.im.utils;
 
 import android.util.Log;
 
+import com.example.im.model.bean.JobInfo;
+import com.google.gson.Gson;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.Configuration;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
+import com.qiniu.cdn.CdnManager;
+import com.qiniu.cdn.CdnResult;
+import com.qiniu.common.QiniuException;
+import com.qiniu.storage.Api;
 import com.qiniu.storage.DownloadUrl;
 import com.qiniu.util.Auth;
 
@@ -18,7 +24,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class QiNiuLoad {
@@ -57,6 +65,13 @@ public class QiNiuLoad {
             }
         }, null);
 
+        //刷新cdn缓存
+        DownloadUrl url = new DownloadUrl(domainOfBucket, false, key);
+        // 带有效期
+        long deadline = System.currentTimeMillis()/1000 + 3600;
+        String urlString = url.buildURL(auth, deadline);
+        refresh(urlString);
+
         return "";
     }
 
@@ -85,7 +100,7 @@ public class QiNiuLoad {
             if (responseCode == Connection.HTTP_OK) {
                 InputStream inputStream = Connection.getInputStream();
                 ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
-                byte[] bytes = new byte[1024];
+                byte[] bytes = new byte[4096];
                 int length = 0;
                 while ((length = inputStream.read(bytes)) != -1) {
                     arrayOutputStream.write(bytes, 0, length);
@@ -99,5 +114,38 @@ public class QiNiuLoad {
         } catch (Exception e) {
             return "-1";
         }
+    }
+
+    public static void add_job(JobInfo jobInfo) throws IOException {
+        List<JobInfo> mJobList = new ArrayList<>();
+        String jsData = QiNiuLoad.download("jobList");
+        Log.i("222", jsData);
+        mJobList = Arrays.asList(new Gson().fromJson(jsData, JobInfo[].class));
+
+        List<JobInfo> jobList = new ArrayList<>();
+        for(JobInfo job : mJobList){
+            jobList.add(job);
+        }
+        jobList.add(jobInfo);
+
+        for(JobInfo job : jobList){
+            Log.i("222", job.toString());
+        }
+        Log.i("222", jobInfo.toString());
+//        mJobList = new ArrayList<>();
+//        mJobList.add(new JobInfo("1", "1_name", "1_detail", "10"));
+//        mJobList.add(new JobInfo("2", "2_name", "2_detail", "20"));
+//        mJobList.add(new JobInfo("3", "3_name", "3_detail", "30"));
+//        mJobList.add(new JobInfo("4", "4_name", "4_detail", "40"));
+//        mJobList.add(new JobInfo("5", "5_name", "5_detail", "50"));
+       //mJobList.add(jobInfo);
+        QiNiuLoad.upload(new Gson().toJson(jobList),"jobList");
+    }
+
+    public static void refresh(String url) throws QiniuException {
+        String [] urls = {url};
+        Auth auth = Auth.create(accessKey, secretKey);
+        CdnManager c = new CdnManager(auth);
+        CdnResult.RefreshResult response = c.refreshUrls(urls);
     }
 }

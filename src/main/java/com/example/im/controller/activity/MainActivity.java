@@ -53,10 +53,13 @@ public class MainActivity extends FragmentActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 Fragment fragment=null;
                 if (checkedId == R.id.rb_main_chat) {
+                    chatFragment = new ShowJobListFragment();
                     fragment = chatFragment;
                 } else if (checkedId == R.id.rb_main_contact) {
+                    contractListFragment = new ContractListFragment();
                     fragment = contractListFragment;
                 } else if (checkedId == R.id.rb_main_setting) {
+                    settingFragment = new SettingFragment();
                     fragment = settingFragment;
                 } else {
                     // 如果有其他的 checkedId，可以添加额外的处理逻辑

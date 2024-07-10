@@ -1,5 +1,7 @@
 package com.example.im.model.bean;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class JobInfo implements Serializable{
@@ -49,5 +51,9 @@ public class JobInfo implements Serializable{
         this.salary = salary;
     }
 
-
+    @NonNull
+    @Override
+    public String toString() {
+        return this.salary+" "+this.getName_HR();
+    }
 }
