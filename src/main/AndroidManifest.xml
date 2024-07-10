@@ -51,38 +51,23 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".im.controller.activity.RegisterActivity_User"
-            android:exported="false" />
-        <activity
-            android:name=".im.controller.activity.RegisterActivity_HR"
-            android:exported="false" />
-        <activity
-            android:name=".im.controller.activity.RegisterActivity"
-            android:exported="false" />
-        <activity
             android:name=".im.controller.activity.JobDetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".im.controller.activity.Login_User_or_HR_Activity" />
-        <activity
-            android:name=".im.controller.activity.Activity_login_to_user" />
-        <activity
-            android:name=".im.controller.activity.Activity_login_to_hr" />
         <activity android:name=".im.controller.activity.ChatActivity" />
         <activity android:name=".im.controller.activity.InviteActivity" />
         <activity android:name=".im.controller.activity.AddContactActivity" />
         <activity android:name=".im.controller.activity.MainActivity" />
         <activity android:name=".im.controller.activity.LoginActivity" />
         <activity android:name=".im.controller.activity.AboutActivity" />
+        <activity android:name=".im.controller.activity.JobSentActivity"/>
         <activity android:name=".im.controller.activity.SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.im.controller.activity.Activity_login_to_user" /> <!-- 设置环信应用的AppKey -->
+        <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="1167240702169552#demo" /> <!-- 声明SDK所需的service SDK核心功能 -->

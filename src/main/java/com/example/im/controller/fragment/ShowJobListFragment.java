@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.R;
 import com.example.im.MyApplication;
 import com.example.im.controller.activity.JobDetailActivity;
+import com.example.im.controller.activity.JobSentActivity;
 import com.example.im.controller.adapter.JobListAdapter;
 import com.example.im.model.bean.JobInfo;
 
@@ -32,7 +33,6 @@ public class ShowJobListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        //View view = View.inflate(getActivity(), R.layout.fragment_about_me, null);
 //        //show(view);
-
         View view = View.inflate(getActivity(), R.layout.job_list, null);
         try {
             mJobList = new JobListAdapter().getTestJobList();
@@ -40,7 +40,11 @@ public class ShowJobListFragment extends Fragment {
             throw new RuntimeException(e);
         }
         ll_jobList = view.findViewById(R.id.ll_job_list);
-        ll_job_news = View.inflate(getActivity(),R.layout.user_job_item,null).findViewById(R.id.ll_job_news);
+//        Button bt_refresh = view.findViewById(R.id.bt_refresh);
+//        bt_refresh.setOnClickListener(v -> {
+//
+//        });
+//        ll_job_news = View.inflate(getActivity(),R.layout.user_job_item,null).findViewById(R.id.ll_job_news);
 
         showJobList();
         return view;
@@ -50,14 +54,27 @@ public class ShowJobListFragment extends Fragment {
         Log.i("222", "showJobList: "+account);
         if(account.equals("HR")){
             ll_jobList.removeAllViews();
+
+            View view_bt_add = LayoutInflater.from(this.getContext()).inflate(R.layout.job_add, null);
+            Button job_add_bt = view_bt_add.findViewById(R.id.job_add_bt);
+            job_add_bt.setOnClickListener(v -> {
+
+                Intent intent = new Intent(getActivity(), JobSentActivity.class);
+                intent.putExtra("name", ((MyApplication) getActivity().getApplication()).getName());
+                startActivity(intent);
+
+            });
+            ll_jobList.addView(view_bt_add);
+
             for (int i = 0; i < mJobList.size(); i++) {
                 JobInfo jobInfo = mJobList.get(i);
-                View view = LayoutInflater.from(this.getContext()).inflate(R.layout.user_job_item, null);
+                if (!jobInfo.getName_HR().equals(((MyApplication)getActivity().getApplication()).getName()))continue;
+                View view = LayoutInflater.from(this.getContext()).inflate(R.layout.hr_job_item, null);
                 TextView hr_name = view.findViewById(R.id.hr_name);
                 TextView tv_name = view.findViewById(R.id.job_name);
                 TextView tv_salary = view.findViewById(R.id.job_salary);
                 Button jobbutton = view.findViewById(R.id.job_bt);
-                // 给商品行添加点击事件。点击商品行跳到商品的详情页
+                // 给按钮添加点击事件
                 jobbutton.setOnClickListener(v -> {
 
                     Intent intent = new Intent(getActivity(), JobDetailActivity.class);
@@ -65,6 +82,7 @@ public class ShowJobListFragment extends Fragment {
 
                     startActivity(intent);
                 });
+
                 hr_name.setText(jobInfo.getName_HR());
                 tv_name.setText(jobInfo.getJobName());
                 tv_salary.setText(jobInfo.getSalary());
