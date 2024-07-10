@@ -51,23 +51,6 @@ public class JobListAdapter extends BaseAdapter {
     }
 
     public List<JobInfo> getTestJobList() throws IOException {
-//        mJobList.add(new JobInfo("1", "1_name", "1_detail", "10"));
-//        mJobList.add(new JobInfo("2", "2_name", "2_detail", "20"));
-//        mJobList.add(new JobInfo("3", "3_name", "3_detail", "30"));
-//        mJobList.add(new JobInfo("4", "4_name", "4_detail", "40"));
-//        mJobList.add(new JobInfo("5", "5_name", "5_detail", "50"));
-//        String js= new Gson().toJson(mJobList);
-
-//        try {
-//            mJobList.add(new JobInfo(js, js,
-//                    "10_detail", new QiNiuLoad().upload(js)));
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        js= new Gson().toJson(mJobList);
-//        mJobList= Arrays.asList(new Gson().fromJson(js, JobInfo[].class));
         String jsData = QiNiuLoad.download("jobList");
         mJobList= Arrays.asList(new Gson().fromJson(jsData, JobInfo[].class));
         return mJobList;

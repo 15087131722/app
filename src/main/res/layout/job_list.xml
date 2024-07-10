@@ -11,6 +11,11 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:gravity="left"/>-->
+<!--    <Button-->
+<!--        android:id="@+id/bt_refresh"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="刷新"/>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >

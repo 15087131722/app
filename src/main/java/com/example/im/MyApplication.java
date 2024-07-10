@@ -11,6 +11,7 @@ import com.hyphenate.easeui.EaseIM;
 public class MyApplication extends Application {
     private static Context mContext;
     private String UserOrHR;
+    private String name;
 
     @Override
     public void onCreate() {
@@ -48,5 +49,13 @@ public class MyApplication extends Application {
 
     public void setUserOrHR(String userOrHR) {
         UserOrHR = userOrHR;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
