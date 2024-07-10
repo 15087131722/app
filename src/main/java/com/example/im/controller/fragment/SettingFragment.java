@@ -1,6 +1,6 @@
 package com.example.im.controller.fragment;
 
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,77 +10,96 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.R;
+import com.example.im.controller.activity.AboutActivity;
 import com.example.im.controller.activity.LoginActivity;
 import com.example.im.model.Model;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 
 public class SettingFragment extends Fragment {
-    private Button bt_setting_logout;
-    private TextView userId_view;
-    private TextView nickName_view;
+    private Button bt_setting_logout; // 退出登录按钮
+    private TextView userId_view; // 用户ID显示控件
+    private TextView nickName_view; // 用户昵称显示控件
+
+    private Button bt_about;
 
     @Nullable
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_about_me, null);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // 加载布局文件 fragment_about_me.xml
+        View view = inflater.inflate(R.layout.fragment_about_me, container, false);
 
+        // 初始化视图控件
         initView(view);
+
         return view;
     }
 
+    // 初始化视图控件
     private void initView(View view) {
-
-        nickName_view = view.findViewById(R.id.tv_nickName);
-        userId_view = view.findViewById(R.id.tv_userId);
-        bt_setting_logout = view.findViewById(R.id.bt_setting_logout);
-
+        nickName_view = view.findViewById(R.id.tv_nickName); // 获取用户昵称显示控件
+        userId_view = view.findViewById(R.id.tv_userId); // 获取用户ID显示控件
+        bt_setting_logout = view.findViewById(R.id.bt_setting_logout); // 获取退出登录按钮
+        bt_about = view.findViewById(R.id.bt_about);        // 获取关于按钮
     }
 
-
     @Override
-    public void onActivityCreated(@Nullable  Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        // 初始化数据
         initData();
     }
 
+    // 初始化数据
+    @SuppressLint("SetTextI18n")
     private void initData() {
-        //在button上显示当前用户名称
-        //bt_setting_logout.setText("退出登录("+ EMClient.getInstance().getCurrentUser()+")");
-        //在TextView上显示当前用户名称
+        // 在 TextView 上显示当前用户账号
         nickName_view.setText("账号：" + EMClient.getInstance().getCurrentUser());
 
-        //退出登录的逻辑处理
+        // 设置关于按钮的点击事件
+        bt_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 跳转到关于页面的逻辑
+                Intent intent = new Intent(getActivity(), AboutActivity.class); // 假设 AboutActivity 是你要跳转的页面类
+                startActivity(intent);
+            }
+        });
+
+        // 设置退出登录按钮的点击事件
         bt_setting_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 在全局线程池中执行退出登录操作
                 Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
                     @Override
                     public void run() {
-                        //登录环信服务器退出登录
+                        // 调用环信 SDK 的退出登录方法
                         EMClient.getInstance().logout(false, new EMCallBack() {
                             @Override
                             public void onSuccess() {
-
-                                //关闭DBHelper
+                                // 成功退出登录后的操作
+                                // 关闭数据库连接
                                 Model.getInstance().getDbManager().close();
 
+                                // 在 UI 线程中更新 UI 显示
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        //更新ui显示
+                                        // 弹出退出成功的提示
                                         Toast.makeText(getActivity(), "退出成功", Toast.LENGTH_SHORT).show();
 
-                                        //回到登录页面
+                                        // 跳转到登录页面
                                         Intent intent = new Intent(getActivity(), LoginActivity.class);
-
                                         startActivity(intent);
 
+                                        // 结束当前 Activity
                                         getActivity().finish();
                                     }
                                 });
@@ -88,9 +107,11 @@ public class SettingFragment extends Fragment {
 
                             @Override
                             public void onError(int code, String error) {
+                                // 退出登录失败的操作
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        // 弹出退出失败的提示
                                         Toast.makeText(getActivity(), "退出失败", Toast.LENGTH_SHORT).show();
                                     }
                                 });
@@ -98,7 +119,7 @@ public class SettingFragment extends Fragment {
 
                             @Override
                             public void onProgress(int progress, String status) {
-
+                                // 退出登录过程中的进度回调，可以不做处理
                             }
                         });
                     }
