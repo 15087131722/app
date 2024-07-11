@@ -1,8 +1,10 @@
 package com.example.im.model.bean;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class JobInfo implements Serializable{
     String name_HR;
@@ -55,5 +57,18 @@ public class JobInfo implements Serializable{
     @Override
     public String toString() {
         return this.salary+" "+this.getName_HR();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        JobInfo jobInfo = (JobInfo) o;
+        return Objects.equals(name_HR, jobInfo.name_HR) && Objects.equals(JobName, jobInfo.JobName) && Objects.equals(detail, jobInfo.detail) && Objects.equals(salary, jobInfo.salary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name_HR, JobName, detail, salary);
     }
 }

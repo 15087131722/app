@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.R;
 import com.example.im.MyApplication;
 import com.example.im.model.bean.JobInfo;
-import com.example.im.utils.QiNiuLoad;
+import com.example.im.model.dao.JobDao;
 
 import java.io.IOException;
 
@@ -57,12 +57,13 @@ public class JobSentActivity extends AppCompatActivity {
                         job_sent_detail.getText().toString(),
                         job_sent_salary.getText().toString());
                 try {
-                    QiNiuLoad.add_job(jobInfo);
+                    JobDao.add_job(jobInfo);
                     Toast.makeText(JobSentActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     Toast.makeText(JobSentActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
                 }
+                finish();
             }
         });
         bt_job_sent_back.setOnClickListener(new View.OnClickListener() {

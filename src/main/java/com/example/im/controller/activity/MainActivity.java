@@ -12,14 +12,14 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.R;
+import com.example.im.controller.fragment.ChatFragment;
 import com.example.im.controller.fragment.ShowJobListFragment;
-import com.example.im.controller.fragment.ContractListFragment;
 import com.example.im.controller.fragment.SettingFragment;
 
 public class MainActivity extends FragmentActivity {
     private RadioGroup rg_main; // 底部导航的 RadioGroup 控件
-    private ShowJobListFragment chatFragment; // 对话列表 Fragment
-    private ContractListFragment contractListFragment; // 联系人列表 Fragment
+    private ShowJobListFragment showJobListFragment; // 对话列表 Fragment
+    private ChatFragment chatFragment; // 联系人列表 Fragment
     private SettingFragment settingFragment; // 设置 Fragment
 
     @Override
@@ -47,11 +47,11 @@ public class MainActivity extends FragmentActivity {
                 Fragment fragment = null;
                 // 根据选择的 RadioButton 设置要显示的 Fragment
                 if (checkedId == R.id.rb_main_chat) {
-                    chatFragment = new ShowJobListFragment();
-                    fragment = chatFragment;
+                    showJobListFragment = new ShowJobListFragment();
+                    fragment = showJobListFragment;
                 } else if (checkedId == R.id.rb_main_contact) {
-                    contractListFragment = new ContractListFragment();
-                    fragment = contractListFragment;
+                    chatFragment = new ChatFragment();
+                    fragment = chatFragment;
                 } else if (checkedId == R.id.rb_main_setting) {
                     settingFragment = new SettingFragment();
                     fragment = settingFragment;
@@ -77,8 +77,8 @@ public class MainActivity extends FragmentActivity {
     // 初始化数据
     private void initData() {
         // 创建三个 Fragment 对象
-        chatFragment = new ShowJobListFragment();
-        contractListFragment = new ContractListFragment();
+        showJobListFragment = new ShowJobListFragment();
+        chatFragment = new ChatFragment();
         settingFragment = new SettingFragment();
     }
 

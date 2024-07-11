@@ -21,17 +21,17 @@
         <RadioButton
             android:id="@+id/rb_main_chat"
             style="@style/MainButtonStyle"
-            android:text="会话"></RadioButton>
+            android:text="招聘广场"></RadioButton>
 
         <RadioButton
             android:id="@+id/rb_main_contact"
             style="@style/MainButtonStyle"
-            android:text="联系人"></RadioButton>
+            android:text="会话"></RadioButton>
 
         <RadioButton
             android:id="@+id/rb_main_setting"
             style="@style/MainButtonStyle"
-            android:text="我"></RadioButton>
+            android:text="个人信息"></RadioButton>
 
     </RadioGroup>
 

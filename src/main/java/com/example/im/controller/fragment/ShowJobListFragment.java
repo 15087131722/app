@@ -28,7 +28,6 @@ public class ShowJobListFragment extends Fragment {
     //extends EaseConversationListFragment {
    // View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_list, null);
     private LinearLayout ll_jobList;
-    private LinearLayout ll_job_news;
     private List<JobInfo> mJobList;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        //View view = View.inflate(getActivity(), R.layout.fragment_about_me, null);
@@ -40,18 +39,13 @@ public class ShowJobListFragment extends Fragment {
             throw new RuntimeException(e);
         }
         ll_jobList = view.findViewById(R.id.ll_job_list);
-//        Button bt_refresh = view.findViewById(R.id.bt_refresh);
-//        bt_refresh.setOnClickListener(v -> {
-//
-//        });
-//        ll_job_news = View.inflate(getActivity(),R.layout.user_job_item,null).findViewById(R.id.ll_job_news);
 
         showJobList();
         return view;
     }
     private void showJobList(){
         String account = ((MyApplication)getActivity().getApplication()).getUserOrHR();
-        Log.i("222", "showJobList: "+account);
+        //如果是HR
         if(account.equals("HR")){
             ll_jobList.removeAllViews();
 
