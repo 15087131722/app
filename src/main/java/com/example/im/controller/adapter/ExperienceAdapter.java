@@ -36,12 +36,6 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Ex
         holder.etJobDescription.setText(experience.getJobDescription());
     }
 
-    @Override
-    public int getItemCount() {
-        return experienceList.size();
-    }
-
-    // 获取工作经历列表
     public List<Experience> getExperiences() {
         List<Experience> experiences = new ArrayList<>();
         for (int i = 0; i < getItemCount(); i++) {
@@ -51,6 +45,10 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Ex
             experiences.add(new Experience(jobTitle, jobDescription));
         }
         return experiences;
+    }
+    @Override
+    public int getItemCount() {
+        return experienceList.size();
     }
 
     public static class ExperienceViewHolder extends RecyclerView.ViewHolder {
@@ -63,5 +61,4 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Ex
             etJobDescription = itemView.findViewById(R.id.et_job_description);
         }
     }
-
 }

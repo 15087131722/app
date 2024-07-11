@@ -28,6 +28,7 @@ public class UserAccountDao {
         values.put(UserAccountTable.COL_NAME,user.getName());
         values.put(UserAccountTable.COL_NICK,user.getNick());
         values.put(UserAccountTable.COL_PHOTO,user.getPhoto());
+        values.put(UserAccountTable.COL_TYPE,user.getType());
 
         db.replace(UserAccountTable.TAB_NAME,null,values);
 
@@ -50,6 +51,7 @@ public class UserAccountDao {
             userInfo.setName(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_NAME)));
             userInfo.setNick(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_NICK)));
             userInfo.setPhoto(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_PHOTO)));
+            userInfo.setType(cursor.getString(cursor.getColumnIndex(UserAccountTable.COL_TYPE)));
         }
         //关闭资源
         cursor.close();

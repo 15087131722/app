@@ -10,15 +10,17 @@ public class user_info {
     private String jobTitle;
     private String introduction;
     private String experience;
+    private String etExperience;
     private String avatarUrl; // 可选，用于存储头像的URL
     private List<Experience> experienceList; // 工作经历列表
 
     // 构造方法，根据需要自行添加
-    public user_info(String name, String jobTitle, String introduction, String experience, String avatarUrl) {
+    public user_info(String name, String jobTitle, String introduction, String etExperience, String experience, String avatarUrl) {
         this.name = name;
         this.jobTitle = jobTitle;
         this.introduction = introduction;
         this.experience = experience;
+        this.etExperience = etExperience;
         this.avatarUrl = avatarUrl;
         this.experienceList = new ArrayList<>();
     }
@@ -59,6 +61,14 @@ public class user_info {
 
     public void setExperience(String experience) {
         this.experience = experience;
+    }
+
+    public String getEtExperience() {
+        return etExperience;
+    }
+
+    public void setEtExperience(String experience) {
+        this.etExperience = experience;
     }
 
     public String getAvatarUrl() {

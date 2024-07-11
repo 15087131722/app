@@ -95,6 +95,7 @@ public class my_introduction extends AppCompatActivity {
                 etName.setText(userInfo.getName());
                 etJobTitle.setText(userInfo.getJobTitle());
                 etIntroduction.setText(userInfo.getIntroduction());
+                etExperience.setText(userInfo.getEtExperience());
 
                 // 如果是用户界面，加载工作经历列表到 RecyclerView 中
                 if (((MyApplication)getApplication()).getUserOrHR().equals("USER")) {
@@ -113,11 +114,11 @@ public class my_introduction extends AppCompatActivity {
         String name = etName.getText().toString().trim();
         String jobTitle = etJobTitle.getText().toString().trim();
         String introduction = etIntroduction.getText().toString().trim();
-
+        String etexperience = etExperience.getText().toString().trim();
         List<Experience> experiences = experienceAdapter.getExperiences();
 
         // 创建 UserInfo 对象
-        user_info userInfo = new user_info(name, jobTitle, introduction, "", ""); // avatarUrl 可以为空字符串或者不传递，根据需要传递
+        user_info userInfo = new user_info(name, jobTitle, introduction, etexperience, "", ""); // avatarUrl 可以为空字符串或者不传递，根据需要传递
         userInfo.setExperienceList(experiences); // 设置工作经历列表
 
         // 将 UserInfo 对象上传至七牛云
