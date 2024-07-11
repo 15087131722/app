@@ -15,4 +15,8 @@
     <string name="user_name">名称</string>
     <string name="job">职位</string>
     <string name="save">保存</string>
+    <string name="联系方式">联系方式</string>
+    <string name="公司简介">公司简介</string>
+    <string name="公司地址">公司地址</string>
+    <string name="公司名称">公司名称</string>
 </resources>

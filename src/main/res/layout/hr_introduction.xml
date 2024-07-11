@@ -7,9 +7,8 @@
     android:padding="16dp">
 
     <!-- 保存数据按钮 -->
-
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_save_hr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -29,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_save"
+        app:layout_constraintTop_toBottomOf="@id/btn_save_hr"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
@@ -37,72 +36,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- 用户头像 -->
-
-            <!-- 用户名 -->
+            <!-- 公司Logo -->
             <ImageView
-                android:clickable="true"
-                android:id="@+id/iv_avatar"
+                android:id="@+id/iv_company_logo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
+                android:clickable="true"
                 android:contentDescription="@string/need_avatar"
-                android:src="@drawable/avatar"
+                android:src="@drawable/hr"
                 android:focusable="true" />
 
+            <!-- 公司名称 -->
             <EditText
-                android:id="@+id/et_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="16dp"
-                android:hint="@string/user_name"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <!-- 用户职位 -->
-            <EditText
-                android:id="@+id/et_job_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:hint="@string/job"
-                android:textSize="18sp" />
-
-            <!-- 分割线 -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/black" />
-
-            <!-- 个人简介 -->
-            <EditText
-                android:id="@+id/et_introduction"
+                android:id="@+id/et_company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/self_introduction"
+                android:hint="@string/公司名称"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp" />
+
+            <!-- 公司地址 -->
+            <EditText
+                android:id="@+id/et_company_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/公司地址"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp" />
+
+
+            <!-- 公司简介 -->
+            <EditText
+                android:id="@+id/et_company_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/公司简介"
                 android:inputType="textMultiLine"
                 android:minLines="3"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
-            <!-- 学历 -->
+            <!-- 公司联系方式 -->
             <EditText
-                android:id="@+id/et_experience"
+                android:id="@+id/et_company_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="@string/Educational_qualifications"
-                android:textSize="16sp" />
-
-            <!-- 工作经历列表 -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_experience"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_experience" />
+                android:hint="@string/联系方式"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp" />
 
         </LinearLayout>
     </ScrollView>
