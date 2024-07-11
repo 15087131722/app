@@ -12,33 +12,74 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="薪资: "
+                android:textSize="30dp"/>
+
             <TextView
                 android:id="@+id/tv_job_salary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:textSize="20dp" />
+                android:textSize="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详情: "
+                android:textSize="30dp"/>
 
             <TextView
                 android:id="@+id/tv_job_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:textSize="20sp" />
+                android:textSize="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="500dp"/>
+
+        </LinearLayout>
+
             <Button
                 android:id="@+id/bt_get_HR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="联系HR"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:background="#20B2AA"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:layout_margin="15dp"
+               />
             <Button
                 android:id="@+id/bt_go_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="返回主界面"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_margin="15dp"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
