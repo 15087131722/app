@@ -14,11 +14,19 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.im.MyApplication;
 import com.example.im.model.Model;
+import com.example.im.model.bean.JobInfo;
+import com.example.im.utils.QiNiuLoad;
+import com.google.gson.Gson;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
 import com.example.im.model.bean.UserInfo;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //登录页面
 public class LoginActivity extends Activity {
@@ -33,6 +41,17 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        try {
+//            JobInfo jobInfo =new JobInfo("123hr","123hr","123hr","123hr");
+//
+//            List<JobInfo> jobList = new ArrayList<>();
+//
+//            jobList.add(jobInfo);
+//
+//            QiNiuLoad.upload(new Gson().toJson(jobList),"jobList");
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
         init();
 
         /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
