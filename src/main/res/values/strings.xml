@@ -12,4 +12,7 @@
     <string name="need_avatar">需要头像</string>
     <string name="self_introduction">个人简介</string>
     <string name="Educational_qualifications">学历</string>
+    <string name="user_name">名称</string>
+    <string name="job">职位</string>
+    <string name="save">保存</string>
 </resources>

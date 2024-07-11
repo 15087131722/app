@@ -12,10 +12,7 @@ import com.example.im.utils.SpUtils;
 import com.hyphenate.EMContactListener;
 import com.hyphenate.chat.EMClient;
 
-/**
- * @Author cyh
- * @Date 2021/6/4 11:20
- */
+
 //全局事件监听类
 public class EventListener {
 

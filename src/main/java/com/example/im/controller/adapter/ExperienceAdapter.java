@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.R;
 import com.example.im.controller.activity.model.Experience;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.ExperienceViewHolder> {
@@ -40,6 +41,18 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Ex
         return experienceList.size();
     }
 
+    // 获取工作经历列表
+    public List<Experience> getExperiences() {
+        List<Experience> experiences = new ArrayList<>();
+        for (int i = 0; i < getItemCount(); i++) {
+            Experience experience = experienceList.get(i);
+            String jobTitle = experience.getJobTitle();
+            String jobDescription = experience.getJobDescription();
+            experiences.add(new Experience(jobTitle, jobDescription));
+        }
+        return experiences;
+    }
+
     public static class ExperienceViewHolder extends RecyclerView.ViewHolder {
         EditText etJobTitle;
         EditText etJobDescription;
@@ -50,4 +63,5 @@ public class ExperienceAdapter extends RecyclerView.Adapter<ExperienceAdapter.Ex
             etJobDescription = itemView.findViewById(R.id.et_job_description);
         }
     }
+
 }

@@ -1,9 +1,6 @@
 package com.example.im.utils;
 
-/**
- * @Author cyh
- * @Date 2021/6/4 11:33
- */
+
 //全局的常量类
 public class Constant {
 

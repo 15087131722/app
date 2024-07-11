@@ -14,10 +14,7 @@ import com.example.im.model.bean.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @Author cyh
- * @Date 2021/6/4 17:13
- */
+
 //邀请信息列表的适配器
 public class InviteAdapter extends BaseAdapter {
     private Context mContext;

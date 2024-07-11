@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -122,6 +123,7 @@ public class LoginActivity extends Activity {
         String loginName = et_name.getText().toString() + ((MyApplication) getApplication()).getUserOrHR();
         String loginPwd = et_pwd.getText().toString() + ((MyApplication) getApplication()).getUserOrHR();
         ((MyApplication) getApplication()).setName(loginName);
+        Log.i("222", "login: "+((MyApplication)getApplication()).getName());
 
         //2 校验输入的用户名和密码
         if (TextUtils.isEmpty(loginName) || TextUtils.isEmpty(loginPwd)) {
