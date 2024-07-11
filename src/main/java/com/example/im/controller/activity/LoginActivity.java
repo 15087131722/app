@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -119,8 +120,8 @@ public class LoginActivity extends Activity {
     //登录按钮的逻辑处理
     private void login() {
         //1 获取输入的用户名和密码
-        String loginName = et_name.getText().toString() + ((MyApplication) getApplication()).getUserOrHR();
-        String loginPwd = et_pwd.getText().toString() + ((MyApplication) getApplication()).getUserOrHR();
+        String loginName = et_name.getText().toString() + ((MyApplication) getApplication()).getUserOrHR().toLowerCase();
+        String loginPwd = et_pwd.getText().toString() + ((MyApplication) getApplication()).getUserOrHR().toLowerCase();
         ((MyApplication) getApplication()).setName(loginName);
 
         //2 校验输入的用户名和密码
@@ -187,8 +188,8 @@ public class LoginActivity extends Activity {
     //注册的业务逻辑处理
     private void regist() {
         //1 获取输入的用户名和密码
-        String registName = et_name.getText().toString() + ((MyApplication) getApplication()).getUserOrHR();
-        String registPwd = et_pwd.getText().toString() + ((MyApplication) getApplication()).getUserOrHR();
+        String registName = et_name.getText().toString() + ((MyApplication) getApplication()).getUserOrHR().toLowerCase();
+        String registPwd = et_pwd.getText().toString() + ((MyApplication) getApplication()).getUserOrHR().toLowerCase();
 
         //2 校验输入的用户名和密码
         if (TextUtils.isEmpty(registName) || TextUtils.isEmpty(registPwd)) {

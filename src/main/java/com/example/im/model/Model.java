@@ -2,13 +2,9 @@ package com.example.im.model;
 
 import android.content.Context;
 
-import com.example.im.model.bean.HRInfo;
 import com.example.im.model.bean.UserInfo;
-import com.example.im.model.dao.HRAccountDao;
-import com.example.im.model.dao.JobMessageDao;
 import com.example.im.model.dao.UserAccountDao;
 import com.example.im.model.db.DBManager;
-import com.example.im.model.db.JobMessageDB;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
@@ -21,9 +17,6 @@ public class Model {
     //创建对象
     private static Model model = new Model();
     private UserAccountDao userAccountDao;
-    private HRAccountDao hrAccountDao;
-
-    private JobMessageDao jobMessageDao;
     private DBManager dbManager;
 
     //私有化构造
@@ -42,8 +35,6 @@ public class Model {
 
         //创建用户账号数据库操作类对象
         userAccountDao = new UserAccountDao(mContext);
-        hrAccountDao = new HRAccountDao(mContext);
-        //jobMessageDao = new JobMessageDao(mContext);
 
         //开启全局监听
         EventListener eventListener = new EventListener(mContext);
@@ -56,19 +47,6 @@ public class Model {
 
     //用户登录成功后的处理方法
     public void loginSuccess(UserInfo account) {
-
-        //校验
-        if (account == null) {
-            return;
-        }
-        if (dbManager!=null) {
-             dbManager.close();
-        }
-
-        dbManager = new DBManager(mContext,account.getName());
-    }
-
-    public void loginSuccess(HRInfo account) {
 
         //校验
         if (account == null) {
@@ -88,8 +66,5 @@ public class Model {
     //获取用户账户数据库的操作类对象
     public UserAccountDao getUserAccountDao(){
         return userAccountDao;
-    }
-    public HRAccountDao getHrAccountDao(){
-        return  hrAccountDao;
     }
 }

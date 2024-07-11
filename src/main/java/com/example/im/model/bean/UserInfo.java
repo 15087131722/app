@@ -6,6 +6,7 @@ public class UserInfo {
     private String name;//用户名称
     private String hxid;//环信id
     private String nick;//用户昵称
+    private String type;//user还是hr
     private String photo;//用户头像
 
     public UserInfo() {
@@ -16,6 +17,11 @@ public class UserInfo {
         this.name = name;
         this.hxid = name;
         this.nick = name;
+        if(name.endsWith("user")){
+            this.type = "USER";
+        }else {
+            this.type="HR";
+        }
     }
 
     public String getName() {
@@ -50,6 +56,14 @@ public class UserInfo {
         this.photo = photo;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -57,6 +71,7 @@ public class UserInfo {
                 ", hxid='" + hxid + '\'' +
                 ", nick='" + nick + '\'' +
                 ", photo='" + photo + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

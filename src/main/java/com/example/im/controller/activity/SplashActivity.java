@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.R;
+import com.example.im.MyApplication;
 import com.example.im.model.Model;
 import com.example.im.model.bean.UserInfo;
 import com.hyphenate.chat.EMClient;
@@ -51,6 +53,8 @@ public class SplashActivity extends Activity {
 
                         //获取当前登录用户的信息
                         UserInfo account = Model.getInstance().getUserAccountDao().getAccountByHxid(EMClient.getInstance().getCurrentUser());
+                        ((MyApplication)getApplication()).setUserOrHR(account.getType());
+                        ((MyApplication)getApplication()).setName(account.getName());
 
                         if(account==null){
                             //跳转到登录页面
