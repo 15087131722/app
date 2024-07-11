@@ -12,11 +12,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.R;
 import com.example.im.controller.activity.AboutActivity;
 import com.example.im.controller.activity.LoginActivity;
+import com.example.im.controller.activity.my_introduction;
 import com.example.im.model.Model;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
@@ -27,6 +29,8 @@ public class SettingFragment extends Fragment {
     private TextView nickName_view; // 用户昵称显示控件
 
     private Button bt_about;
+
+    private ConstraintLayout cl_user;
 
     @Nullable
     @Override
@@ -46,6 +50,9 @@ public class SettingFragment extends Fragment {
         userId_view = view.findViewById(R.id.tv_userId); // 获取用户ID显示控件
         bt_setting_logout = view.findViewById(R.id.bt_setting_logout); // 获取退出登录按钮
         bt_about = view.findViewById(R.id.bt_about);        // 获取关于按钮
+
+        // 获取 ConstraintLayout
+        cl_user = view.findViewById(R.id.cl_user);
     }
 
     @Override
@@ -68,6 +75,16 @@ public class SettingFragment extends Fragment {
             public void onClick(View v) {
                 // 跳转到关于页面的逻辑
                 Intent intent = new Intent(getActivity(), AboutActivity.class); // 假设 AboutActivity 是你要跳转的页面类
+                startActivity(intent);
+            }
+        });
+
+        // 添加点击事件监听器
+        cl_user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 跳转到目标 Activity
+                Intent intent = new Intent(getActivity(), my_introduction.class);
                 startActivity(intent);
             }
         });

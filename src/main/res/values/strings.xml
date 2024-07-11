@@ -6,4 +6,10 @@
     <string name="team_name">开发团队:移动丁真</string>
     <string name="contact_address">联系地址:英华五618</string>
     <string name="license_apache_license_2_0">版权:Apache License 2.0</string>
+    <string name="red_pig">朱鸿宇</string>
+    <string name="job_name">职位名称</string>
+    <string name="job_description">工作描述</string>
+    <string name="need_avatar">需要头像</string>
+    <string name="self_introduction">个人简介</string>
+    <string name="Educational_qualifications">学历</string>
 </resources>
