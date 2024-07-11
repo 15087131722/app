@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,7 +58,9 @@ public class JobSentActivity extends AppCompatActivity {
                         job_sent_salary.getText().toString());
                 try {
                     QiNiuLoad.add_job(jobInfo);
+                    Toast.makeText(JobSentActivity.this, "发送成功", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
+                    Toast.makeText(JobSentActivity.this, "发送失败", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
                 }
             }

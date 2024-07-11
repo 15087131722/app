@@ -69,50 +69,38 @@ public class ShowJobListFragment extends Fragment {
             for (int i = 0; i < mJobList.size(); i++) {
                 JobInfo jobInfo = mJobList.get(i);
                 if (!jobInfo.getName_HR().equals(((MyApplication)getActivity().getApplication()).getName()))continue;
-                View view = LayoutInflater.from(this.getContext()).inflate(R.layout.hr_job_item, null);
-                TextView hr_name = view.findViewById(R.id.hr_name);
-                TextView tv_name = view.findViewById(R.id.job_name);
-                TextView tv_salary = view.findViewById(R.id.job_salary);
-                Button jobbutton = view.findViewById(R.id.job_bt);
-                // 给按钮添加点击事件
-                jobbutton.setOnClickListener(v -> {
-
-                    Intent intent = new Intent(getActivity(), JobDetailActivity.class);
-                    intent.putExtra("jobinfo", jobInfo);
-
-                    startActivity(intent);
-                });
-
-                hr_name.setText(jobInfo.getName_HR());
-                tv_name.setText(jobInfo.getJobName());
-                tv_salary.setText(jobInfo.getSalary());
-                ll_jobList.addView(view);
+                add_job_item_to_ll(jobInfo);
             }
 
         }else if(account.equals("USER")){
             ll_jobList.removeAllViews();
             for (int i = 0; i < mJobList.size(); i++) {
                 JobInfo jobInfo = mJobList.get(i);
-                View view = LayoutInflater.from(this.getContext()).inflate(R.layout.user_job_item, null);
-                TextView hr_name = view.findViewById(R.id.hr_name);
-                TextView tv_name = view.findViewById(R.id.job_name);
-                TextView tv_salary = view.findViewById(R.id.job_salary);
-                Button jobbutton = view.findViewById(R.id.job_bt);
-                // 给商品行添加点击事件。点击商品行跳到商品的详情页
-                jobbutton.setOnClickListener(v -> {
-
-                    Intent intent = new Intent(getActivity(), JobDetailActivity.class);
-                    intent.putExtra("jobinfo", jobInfo);
-
-                    startActivity(intent);
-                });
-                hr_name.setText(jobInfo.getName_HR());
-                tv_name.setText(jobInfo.getJobName());
-                tv_salary.setText(jobInfo.getSalary());
-                ll_jobList.addView(view);
+                add_job_item_to_ll(jobInfo);
             }
         }
 
+    }
+
+    public void add_job_item_to_ll(JobInfo jobInfo){
+        View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_item, null);
+        TextView hr_name = view.findViewById(R.id.hr_name);
+        TextView tv_name = view.findViewById(R.id.job_name);
+        TextView tv_salary = view.findViewById(R.id.job_salary);
+        Button jobbutton = view.findViewById(R.id.job_bt);
+        // 给按钮添加点击事件
+        jobbutton.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getActivity(), JobDetailActivity.class);
+            intent.putExtra("jobinfo", jobInfo);
+
+            startActivity(intent);
+        });
+
+        hr_name.setText(jobInfo.getName_HR());
+        tv_name.setText(jobInfo.getJobName());
+        tv_salary.setText(jobInfo.getSalary());
+        ll_jobList.addView(view);
     }
 
     // @Override
