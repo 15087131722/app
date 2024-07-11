@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,9 +27,11 @@ import java.util.List;
 //会话列表页面
 public class ShowJobListFragment extends Fragment {
     //extends EaseConversationListFragment {
-   // View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_list, null);
+    // View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_list, null);
     private LinearLayout ll_jobList;
+    private LinearLayout ll_job_search;
     private List<JobInfo> mJobList;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        //View view = View.inflate(getActivity(), R.layout.fragment_about_me, null);
 //        //show(view);
@@ -39,15 +42,19 @@ public class ShowJobListFragment extends Fragment {
             throw new RuntimeException(e);
         }
         ll_jobList = view.findViewById(R.id.ll_job_list);
+        ll_job_search = view.findViewById(R.id.ll_job_search);
 
         showJobList();
         return view;
     }
-    private void showJobList(){
-        String account = ((MyApplication)getActivity().getApplication()).getUserOrHR();
+
+    private void showJobList() {
+        String account = ((MyApplication) getActivity().getApplication()).getUserOrHR();
         //如果是HR
-        if(account.equals("HR")){
+        if (account.equals("HR")) {
             ll_jobList.removeAllViews();
+            //如果是hr，则没有搜索
+            ll_job_search.removeAllViews();
 
             View view_bt_add = LayoutInflater.from(this.getContext()).inflate(R.layout.job_add, null);
             Button job_add_bt = view_bt_add.findViewById(R.id.job_add_bt);
@@ -62,12 +69,30 @@ public class ShowJobListFragment extends Fragment {
 
             for (int i = 0; i < mJobList.size(); i++) {
                 JobInfo jobInfo = mJobList.get(i);
-                if (!jobInfo.getName_HR().equals(((MyApplication)getActivity().getApplication()).getName()))continue;
+                if (!jobInfo.getName_HR().equals(((MyApplication) getActivity().getApplication()).getName()))
+                    continue;
                 add_job_item_to_ll(jobInfo);
             }
 
-        }else if(account.equals("USER")){
+        } else if (account.equals("USER")) {
             ll_jobList.removeAllViews();
+            EditText tv_hrName = ll_job_search.findViewById(R.id.hr_name);
+            Button bt_search = ll_job_search.findViewById(R.id.bt_search);
+
+            //搜索按钮添加点击事件
+            bt_search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ll_jobList.removeAllViews();
+                    for (int i = 0; i < mJobList.size(); i++) {
+                        JobInfo jobInfo = mJobList.get(i);
+                        if (jobInfo.getName_HR().contains(tv_hrName.getText().toString())) {
+                            add_job_item_to_ll(jobInfo);
+                        }
+                    }
+                }
+            });
+
             for (int i = 0; i < mJobList.size(); i++) {
                 JobInfo jobInfo = mJobList.get(i);
                 add_job_item_to_ll(jobInfo);
@@ -76,7 +101,7 @@ public class ShowJobListFragment extends Fragment {
 
     }
 
-    public void add_job_item_to_ll(JobInfo jobInfo){
+    public void add_job_item_to_ll(JobInfo jobInfo) {
         View view = LayoutInflater.from(this.getContext()).inflate(R.layout.job_item, null);
         TextView hr_name = view.findViewById(R.id.hr_name);
         TextView tv_name = view.findViewById(R.id.job_name);

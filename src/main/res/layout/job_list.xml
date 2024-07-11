@@ -6,24 +6,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<!--    <TextView-->
-<!--        android:id="@+id/hr_name"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="left"/>-->
-<!--    <Button-->
-<!--        android:id="@+id/bt_refresh"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="刷新"/>-->
+    <LinearLayout
+        android:id="@+id/ll_job_search"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/background_frame"
+        android:layout_margin="0.5dp">
+
+        <EditText
+            android:id="@+id/hr_name"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:hint="查找的HR名"
+            android:textSize="30dp"/>
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="查找"
+            android:textSize="30dp"/>
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/ll_job_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
     </ScrollView>
 
 
